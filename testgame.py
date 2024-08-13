@@ -19,8 +19,8 @@ class PlayerChar:
             other.hp -= damage
             print("크리티컬 히트!!! {}의 공격으로 {}에게 {}데미지를 입혔다!".format(self.name, other.name, damage))
         else :
-            other.hp -= damage
             damage -= other.dfs
+            other.hp -= damage
             if damage < 0:
                 damage = 1
             print("{}의 공격으로 {}에게 {}데미지를 입혔다.".format(self.name, other.name, damage))
