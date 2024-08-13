@@ -17,7 +17,7 @@ class PlayerChar:
         # 공격이 회피될 확률을 계산
         if rd.random() * 100 < other.avd:
             print("\033[32m" + "-" * 15 + " 전투 결과 " + "-" * 15 + "\033[0m")
-            print(color + "{}의 공격이 회피되었습니다.\033[0m".format(self.name))
+            print(f"{color}{self.name}의 공격이 회피되었습니다.\033[0m")
             print("\033[32m" + "-" * 15 + " 현재 스탯 " + "-" * 15 + "\033[0m")
             return
 
@@ -33,14 +33,14 @@ class PlayerChar:
             if damage < 0:
                 damage = 1
             other.hp -= damage
-            print(color + "크리티컬 히트!!! {}의 공격으로 {}에게 {}데미지를 입혔다!\033[0m".format(self.name, other.name, damage))
+            print(f"{color}크리티컬 히트!!! {self.name}의 공격으로 {other.name}에게 {damage}데미지를 입혔다!\033[0m")
         else:
             # 일반 공격
             damage -= other.dfs  # 상대의 방어력을 고려
             if damage < 0:
                 damage = 1
             other.hp -= damage
-            print(color + "{}의 공격으로 {}에게 {}데미지를 입혔다.\033[0m".format(self.name, other.name, damage))
+            print(f"{color}{self.name}의 공격으로 {other.name}에게 {damage}데미지를 입혔다.\033[0m")
 
         # 전투 결과를 출력하는 부분
         if self.isalive() and other.isalive():
@@ -67,7 +67,7 @@ class PlayerChar:
 def playerTurn(player, opponent, color):
     # 플레이어의 턴을 처리하는 함수
     while True:
-        print(color + "{}의 턴입니다. 행동을 선택하세요. : \033[0m".format(player.name))
+        print(f"{color}{player.name}의 턴입니다. 행동을 선택하세요. : \033[0m")
         print("1. 공격")
         print("2. 스킬")
         print("3. 아이템")
@@ -96,7 +96,7 @@ def startGame(pc01, pc02):
     while pc01.isalive() and pc02.isalive():
         playerTurn(pc01, pc02, "\033[31m")  # 플레이어 1의 턴
         if not pc02.isalive():  # 적 캐릭터가 사망했는지 확인
-            print("\033[31m{}의 승리!\033[0m".format(pc01.name))
+            print(f"\033[31m{pc01.name}의 승리!\033[0m")
             break
         print("\033[31m", end="")
         print(pc01)  # 플레이어 1의 상태 출력
@@ -107,7 +107,7 @@ def startGame(pc01, pc02):
         print("\033[32m" + "-" * 30 + "\033[0m")
         playerTurn(pc02, pc01, "\033[34m")  # 플레이어 2의 턴
         if not pc01.isalive():  # 적 캐릭터가 사망했는지 확인
-            print("\033[34m{}의 승리!\033[0m".format(pc02.name))
+            print(f"\033[34m{pc02.name}의 승리!\033[0m")
             break
         print("\033[31m", end="")
         print(pc01)  # 플레이어 1의 상태 출력
