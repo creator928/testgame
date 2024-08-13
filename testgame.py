@@ -20,9 +20,9 @@ class PlayerChar:
             print("크리티컬 히트!!! {}의 공격으로 {}에게 {}데미지를 입혔다!".format(self.name, other.name, damage))
         else :
             damage -= other.dfs
-            other.hp -= damage
             if damage < 0:
                 damage = 1
+            other.hp -= damage
             print("{}의 공격으로 {}에게 {}데미지를 입혔다.".format(self.name, other.name, damage))
         print("-" * 15, "현재 스탯", "-" * 15)
     def isalive(self):
@@ -79,5 +79,7 @@ doggerMan = PlayerChar("돚거맨", hp=700, atk=100, dfs=10, crt=50, avd=0)
 hotPunchMan = PlayerChar("매콤주먹맨", hp=800, atk=100, dfs=30, crt=30, avd=0)
 normalMan1 = PlayerChar("일반인1", hp=550, atk=50, dfs=0, crt=25, avd=0)
 normalMan2 = PlayerChar("일반인2", hp=500, atk=55, dfs=5, crt=20, avd=0)
+crtMan = PlayerChar("치-타맨", hp=700, atk=70, dfs=15, crt=90, avd=0)
+sandBag = PlayerChar("샌드백", hp=1500, atk=0, dfs=100, crt=1, avd=0)
 # 전투 시작
-startGame(normalMan1, normalMan2)
+startGame(bigShMan, crtMan)
